@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">BEEMO</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Beehive Monitoring</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_notiflog">Notification Log</string>
+    <string name="action_history">History</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="my_string">TESTING LANG</string>
+    <string name="about_system">
+        \t\tThe BEEMO-Development of Automated Beehive
+        Monitoring System is a device that will be able to monitor
+        the health status of the bees, through monitoring the inside
+        and outside temperature and relative humidity of the hive,
+        plus the weight which depends on the beehive. In addition,
+        the BEEMO can be used for the research on stingless bees
+        to determine the absolute value of temperature, humidity
+        and weight using the sensors located on the device. It also
+        allows the beekeepers/users to remotely monitor honey
+        accumulation in the beehives by determining the weight
+        produced by the bees. The data from the hives reaches
+        phone application through the cellular and internet
+        networks. A SMS alert will also serve as notification
+        whenever the user is not connected on the internet. The
+        data on the graph collected from the system enables the
+        beekeepers to understand precisely what is happening on
+        the hive and bees. With the information receive from the
+        system, beekeepers can react instantly and accurately
+        making optimal decision for the hives.
+    </string>
+</resources>

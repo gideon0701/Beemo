@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_weight"
+            android:title="Weight"
+            android:icon="@drawable/weight_icon"/>
+
+        <item
+            android:id="@+id/nav_humidity"
+            android:title="Humidity"
+            android:icon="@drawable/humid_icon"/>
+
+        <item
+            android:id="@+id/nav_temp"
+            android:title="Temperature"
+            android:icon="@drawable/temp_icon"/>
+
+        <item
+            android:id="@+id/nav_settings"
+            android:title="Settings"
+            android:icon="@drawable/settings_icon"/>
+
+        <item
+            android:id="@+id/nav_about"
+            android:title="About"
+            android:icon="@drawable/info_icon"/>
+
+
+    </group>
+
+</menu>

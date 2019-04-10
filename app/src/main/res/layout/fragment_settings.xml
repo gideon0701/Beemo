@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.SettingsFragment"
+    android:id="@+id/fragment_settings">
+
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="SETTINGS"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="ALERT NOTIFICATION"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <Switch
+        android:id="@+id/switchNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:checked="false"
+        android:textOff="Off"
+        android:textOn="On"
+        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+
+    <EditText
+        android:id="@+id/editTextContactNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="-SMS"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView27"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="*CONTACT NUMBER"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextContactNumber"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="100dp"
+        android:text="SAVE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/textView26"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutNotificationEnabled"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="- WHEN TEMPERATURE DROPS OR RISEN:"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="12dp"
+                android:text="*SET THE TEMP"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <EditText
+                android:id="@+id/editTextTempFrom"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="3dp"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:maxLength="5"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/textView21"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="C° - "
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/editTextTempFrom"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <EditText
+                android:id="@+id/editTextTempTo"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:maxLength="5"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/textView23"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="C° (Layer 1)"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/editTextTempTo"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="-WHEN RAPIDLY LOSS/GAIN WEIGHT IN A DAY"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTempFrom2" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:text="-READY FOR HARVEST"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTimeSpan" />
+
+            <EditText
+                android:id="@+id/editTextHarvestWeight"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="3dp"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:maxLength="5"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/textView28"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTimeSpan" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="KG"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/editTextHarvestWeight"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTimeSpan" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="12dp"
+                android:text="*Time Span"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+            <EditText
+                android:id="@+id/editTextTimeSpan"
+                android:layout_width="31dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="3dp"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textAlignment="textEnd"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/textView30"
+                app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Day(s)"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/editTextTimeSpan"
+                app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="-WHEN HUMIDITY DROPS OR RISEN"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextHarvestWeight" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="12dp"
+                android:text="*SET THE HUMID"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+            <EditText
+                android:id="@+id/editTextMinHumid"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="3dp"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:maxLength="5"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/textView34"
+                app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="% - "
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/editTextMinHumid"
+                app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+            <EditText
+                android:id="@+id/editTextMaxHumid"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:maxLength="5"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/textView35"
+                app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="% (Layer 1)"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/editTextMaxHumid"
+                app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+            <EditText
+                android:id="@+id/editTextTempFrom2"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:maxLength="5"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/editTextTempFrom"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTempFrom" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="C° - "
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/editTextTempFrom2"
+                app:layout_constraintTop_toTopOf="@+id/editTextTempFrom2" />
+
+            <EditText
+                android:id="@+id/editTextTempTo2"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:maxLength="5"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/textView37"
+                app:layout_constraintTop_toTopOf="@+id/editTextTempFrom2" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="C° (Layer 2)"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/editTextTempTo2"
+                app:layout_constraintTop_toTopOf="@+id/editTextTempFrom2" />
+
+            <EditText
+                android:id="@+id/editTextMinHumid2"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:maxLength="5"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/editTextMinHumid"
+                app:layout_constraintTop_toBottomOf="@+id/editTextMinHumid" />
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="% - "
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/editTextMinHumid2"
+                app:layout_constraintTop_toTopOf="@+id/editTextMinHumid2" />
+
+            <EditText
+                android:id="@+id/editTextMaxHumid2"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:maxLength="5"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/textView39"
+                app:layout_constraintTop_toTopOf="@+id/editTextMinHumid2" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="% (Layer 2)"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/editTextMaxHumid2"
+                app:layout_constraintTop_toTopOf="@+id/editTextMinHumid2" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.constraint.ConstraintLayout>
