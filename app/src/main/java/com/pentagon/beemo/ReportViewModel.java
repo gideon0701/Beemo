@@ -199,17 +199,8 @@ public class ReportViewModel extends ViewModel {
 
     private Date getTime()
     {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         Calendar calendar = Calendar.getInstance();
-        Date dateXaxis;
-        String date = sdf.format(calendar.getTime());
-        try {
-            dateXaxis = sdf.parse(date);
-            return  dateXaxis;
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return  null;
-        }
+        return  calendar.getTime();
 
     }
 }
