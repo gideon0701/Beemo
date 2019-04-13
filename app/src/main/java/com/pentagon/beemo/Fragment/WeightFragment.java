@@ -11,10 +11,13 @@ import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.pentagon.beemo.R;
 import com.pentagon.beemo.ReportViewModel;
+
+import java.text.SimpleDateFormat;
 
 public class WeightFragment extends Fragment {
 
@@ -54,12 +57,17 @@ public class WeightFragment extends Fragment {
         graph.getViewport().setScalableY(true);
         graph.getLegendRenderer().setVisible(true);
         graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
+        graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity(), new SimpleDateFormat("HH:mm:ss")));
+        graph.getGridLabelRenderer().setNumHorizontalLabels(3);
+        graph.getGridLabelRenderer().setHumanRounding(false);
+        graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
         LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>();
         LineGraphSeries<DataPoint> series3 = new LineGraphSeries<DataPoint>();
 
        if(mReportViewModel.reportModel != null) {
+           graph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
            double[] weights = mReportViewModel.getWeights();
            txtViewWeight1.setText(String.valueOf(weights[0]) + "kg");
            txtViewWeight2.setText(String.valueOf(weights[1]) + "kg");

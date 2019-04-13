@@ -8,7 +8,11 @@ import com.pentagon.beemo.Model.ContactNumberModel;
 import com.pentagon.beemo.Model.ReportModel;
 import com.pentagon.beemo.Model.SettingsModel;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ReportViewModel extends ViewModel {
     public ReportModel reportModel;
@@ -46,16 +50,17 @@ public class ReportViewModel extends ViewModel {
 
     public void setWeightGraph(){
         double weight = reportModel.getHive1().getWeight();
+
         weights[0] = weight;
-        seriesWeight1.appendData(new DataPoint(graphWeightLastXValue, weight), true, 30);
+        seriesWeight1.appendData(new DataPoint(getTime(), weight), true, 30);
 
         weight = reportModel.getHive2().getWeight();
         weights[1] = weight;
-        seriesWeight2.appendData(new DataPoint(graphWeightLastXValue, weight), true, 30);
+        seriesWeight2.appendData(new DataPoint(getTime(), weight), true, 30);
 
         weight = reportModel.getHive3().getWeight();
         weights[2] = weight;
-        seriesWeight3.appendData(new DataPoint(graphWeightLastXValue, weight), true, 30);
+        seriesWeight3.appendData(new DataPoint(getTime(), weight), true, 30);
 
     }
 
@@ -63,26 +68,27 @@ public class ReportViewModel extends ViewModel {
         double humid = reportModel.getHive1().getHumidities().get(0);
         double humid2 =reportModel.getHive1().getHumidities().get(1);
         humidOutside = reportModel.getOutside().getHumidity();
+
         humids[0] = humid;
         humids2[0] = humid2;
-        seriesHumidHive1.appendData(new DataPoint(graphWeightLastXValue, humid), true, 100);
-        seriesHumid2Hive1.appendData(new DataPoint(graphWeightLastXValue, humid2), true, 100);
+        seriesHumidHive1.appendData(new DataPoint(getTime(), humid), true, 100);
+        seriesHumid2Hive1.appendData(new DataPoint(getTime(), humid2), true, 100);
 
         humid = reportModel.getHive2().getHumidities().get(0);
         humid2 = reportModel.getHive2().getHumidities().get(1);
         humids[1] = humid;
         humids2[1] = humid2;
-        seriesHumidHive2.appendData(new DataPoint(graphWeightLastXValue, humid), true, 100);
-        seriesHumid2Hive2.appendData(new DataPoint(graphWeightLastXValue, humid2), true, 100);
+        seriesHumidHive2.appendData(new DataPoint(getTime(), humid), true, 100);
+        seriesHumid2Hive2.appendData(new DataPoint(getTime(), humid2), true, 100);
 
         humid = reportModel.getHive3().getHumidities().get(0);
         humid2 = reportModel.getHive3().getHumidities().get(1);
         humids[2] = humid;
         humids2[2] = humid2;
-        seriesHumidHive3.appendData(new DataPoint(graphWeightLastXValue, humid), true, 100);
-        seriesHumid2Hive3.appendData(new DataPoint(graphWeightLastXValue, humid2), true, 100);
+        seriesHumidHive3.appendData(new DataPoint(getTime(), humid), true, 100);
+        seriesHumid2Hive3.appendData(new DataPoint(getTime(), humid2), true, 100);
 
-        seriesHumidOutside.appendData(new DataPoint(graphWeightLastXValue, humidOutside), true, 100);
+        seriesHumidOutside.appendData(new DataPoint(getTime(), humidOutside), true, 100);
 
     }
 
@@ -90,26 +96,27 @@ public class ReportViewModel extends ViewModel {
         double temp = reportModel.getHive1().getTemperatures().get(0);
         double temp2 = reportModel.getHive1().getTemperatures().get(1);
         tempOutside = reportModel.getOutside().getTemperature();
+
         temps[0] = temp;
         temps2[0] = temp2;
-        seriesTempHive1.appendData(new DataPoint(graphWeightLastXValue, temp), true, 100);
-        seriesTemp2Hive1.appendData(new DataPoint(graphWeightLastXValue, temp2), true, 100);
+        seriesTempHive1.appendData(new DataPoint(getTime(), temp), true, 100);
+        seriesTemp2Hive1.appendData(new DataPoint(getTime(), temp2), true, 100);
 
         temp = reportModel.getHive2().getTemperatures().get(0);
         temp2 = reportModel.getHive2().getTemperatures().get(1);
         temps[1] = temp;
         temps2[1] = temp2;
-        seriesTempHive2.appendData(new DataPoint(graphWeightLastXValue, temp), true, 100);
-        seriesTemp2Hive2.appendData(new DataPoint(graphWeightLastXValue, temp2), true, 100);
+        seriesTempHive2.appendData(new DataPoint(getTime(), temp), true, 100);
+        seriesTemp2Hive2.appendData(new DataPoint(getTime(), temp2), true, 100);
 
         temp = reportModel.getHive3().getTemperatures().get(0);
         temp2 = reportModel.getHive3().getTemperatures().get(1);
         temps[2] = temp;
         temps2[2] = temp2;
-        seriesTempHive3.appendData(new DataPoint(graphWeightLastXValue, temp), true, 100);
-        seriesTemp2Hive3.appendData(new DataPoint(graphWeightLastXValue, temp2), true, 100);
+        seriesTempHive3.appendData(new DataPoint(getTime(), temp), true, 100);
+        seriesTemp2Hive3.appendData(new DataPoint(getTime(), temp2), true, 100);
 
-        seriesTempOutside.appendData(new DataPoint(graphWeightLastXValue, tempOutside), true, 100);
+        seriesTempOutside.appendData(new DataPoint(getTime(), tempOutside), true, 100);
         graphWeightLastXValue += 1d;
     }
 
@@ -188,5 +195,21 @@ public class ReportViewModel extends ViewModel {
 
     public Double getTempOutside() {
         return tempOutside;
+    }
+
+    private Date getTime()
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        Calendar calendar = Calendar.getInstance();
+        Date dateXaxis;
+        String date = sdf.format(calendar.getTime());
+        try {
+            dateXaxis = sdf.parse(date);
+            return  dateXaxis;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return  null;
+        }
+
     }
 }

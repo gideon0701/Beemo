@@ -13,10 +13,13 @@ import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.pentagon.beemo.R;
 import com.pentagon.beemo.ReportViewModel;
+
+import java.text.SimpleDateFormat;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,12 +59,20 @@ public class TempFragment extends Fragment {
         graph.getLegendRenderer().setVisible(true);
         graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
         graph.getLegendRenderer().setTextSize(28);
+        graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity(), new SimpleDateFormat("HH:mm:ss")));
+        graph.getGridLabelRenderer().setNumHorizontalLabels(3);
+        graph.getGridLabelRenderer().setHumanRounding(false);
+        graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
 
         graph2.getViewport().setScalable(true);
         graph2.getViewport().setScalableY(true);
         graph2.getLegendRenderer().setVisible(true);
         graph2.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
         graph2.getLegendRenderer().setTextSize(28);
+        graph2.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity(), new SimpleDateFormat("HH:mm:ss")));
+        graph2.getGridLabelRenderer().setNumHorizontalLabels(3);
+        graph2.getGridLabelRenderer().setHumanRounding(false);
+        graph2.getGridLabelRenderer().setHorizontalLabelsVisible(false);
 
         TextView txtViewTempHive1 = view.findViewById(R.id.txtViewTempHive1);
         TextView txtViewTempHive2 = view.findViewById(R.id.txtViewTempHive2);
@@ -84,6 +95,8 @@ public class TempFragment extends Fragment {
         LineGraphSeries<DataPoint> series2_4 = new LineGraphSeries<DataPoint>();
 
         if(mReportViewModel.reportModel != null) {
+            graph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
+            graph2.getGridLabelRenderer().setHorizontalLabelsVisible(true);
             double[] temp = mReportViewModel.getTemps();
             double[] temp2 = mReportViewModel.getTemps2();
 
