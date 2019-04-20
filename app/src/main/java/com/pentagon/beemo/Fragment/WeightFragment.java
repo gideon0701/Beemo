@@ -57,9 +57,6 @@ public class WeightFragment extends Fragment {
         graph.getViewport().setScalableY(true);
         graph.getLegendRenderer().setVisible(true);
         graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
-        graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity(), new SimpleDateFormat("HH:mm:ss")));
-        graph.getGridLabelRenderer().setNumHorizontalLabels(3);
-        graph.getGridLabelRenderer().setHumanRounding(false);
         graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
@@ -67,7 +64,6 @@ public class WeightFragment extends Fragment {
         LineGraphSeries<DataPoint> series3 = new LineGraphSeries<DataPoint>();
 
        if(mReportViewModel.reportModel != null) {
-           graph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
            double[] weights = mReportViewModel.getWeights();
            txtViewWeight1.setText(String.valueOf(weights[0]) + "kg");
            txtViewWeight2.setText(String.valueOf(weights[1]) + "kg");
@@ -82,13 +78,13 @@ public class WeightFragment extends Fragment {
        }
 
         series.setDrawDataPoints(true);
-        series.setDataPointsRadius(5);
+        series.setDataPointsRadius(8);
 
         series2.setDrawDataPoints(true);
-        series2.setDataPointsRadius(5);
+        series2.setDataPointsRadius(8);
 
         series3.setDrawDataPoints(true);
-        series3.setDataPointsRadius(5);
+        series3.setDataPointsRadius(8);
 
         series.setColor(Color.RED);
         series.setTitle("HIVE 1");

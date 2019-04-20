@@ -59,9 +59,6 @@ public class TempFragment extends Fragment {
         graph.getLegendRenderer().setVisible(true);
         graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
         graph.getLegendRenderer().setTextSize(28);
-        graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity(), new SimpleDateFormat("HH:mm:ss")));
-        graph.getGridLabelRenderer().setNumHorizontalLabels(3);
-        graph.getGridLabelRenderer().setHumanRounding(false);
         graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
 
         graph2.getViewport().setScalable(true);
@@ -69,9 +66,6 @@ public class TempFragment extends Fragment {
         graph2.getLegendRenderer().setVisible(true);
         graph2.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
         graph2.getLegendRenderer().setTextSize(28);
-        graph2.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity(), new SimpleDateFormat("HH:mm:ss")));
-        graph2.getGridLabelRenderer().setNumHorizontalLabels(3);
-        graph2.getGridLabelRenderer().setHumanRounding(false);
         graph2.getGridLabelRenderer().setHorizontalLabelsVisible(false);
 
         TextView txtViewTempHive1 = view.findViewById(R.id.txtViewTempHive1);
@@ -95,8 +89,6 @@ public class TempFragment extends Fragment {
         LineGraphSeries<DataPoint> series2_4 = new LineGraphSeries<DataPoint>();
 
         if(mReportViewModel.reportModel != null) {
-            graph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
-            graph2.getGridLabelRenderer().setHorizontalLabelsVisible(true);
             double[] temp = mReportViewModel.getTemps();
             double[] temp2 = mReportViewModel.getTemps2();
 
@@ -122,13 +114,13 @@ public class TempFragment extends Fragment {
         }
 
         series.setDrawDataPoints(true);
-        series.setDataPointsRadius(5);
+        series.setDataPointsRadius(8);
         series2.setDrawDataPoints(true);
-        series2.setDataPointsRadius(5);
+        series2.setDataPointsRadius(8);
         series3.setDrawDataPoints(true);
-        series3.setDataPointsRadius(5);
+        series3.setDataPointsRadius(8);
         series4.setDrawDataPoints(true);
-        series4.setDataPointsRadius(5);
+        series4.setDataPointsRadius(8);
         series.setColor(Color.RED);
         series.setTitle("HIVE 1");
         series2.setColor(Color.BLUE);
@@ -139,13 +131,13 @@ public class TempFragment extends Fragment {
         series4.setTitle("OUTSIDE");
 
         series2_1.setDrawDataPoints(true);
-        series2_1.setDataPointsRadius(5);
+        series2_1.setDataPointsRadius(8);
         series2_2.setDrawDataPoints(true);
-        series2_2.setDataPointsRadius(5);
+        series2_2.setDataPointsRadius(8);
         series2_3.setDrawDataPoints(true);
-        series2_3.setDataPointsRadius(5);
+        series2_3.setDataPointsRadius(8);
         series2_4.setDrawDataPoints(true);
-        series2_4.setDataPointsRadius(5);
+        series2_4.setDataPointsRadius(8);
         series2_1.setColor(Color.RED);
         series2_1.setTitle("HIVE 1");
         series2_2.setColor(Color.BLUE);

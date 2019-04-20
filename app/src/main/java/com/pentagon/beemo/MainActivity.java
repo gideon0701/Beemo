@@ -415,6 +415,9 @@ public class MainActivity extends AppCompatActivity
         stringBuilder.append(System.getProperty("line.separator"));
         stringBuilder.append("[HIVE 1]");
         stringBuilder.append(System.getProperty("line.separator"));
+        stringBuilder.append("Weight: ");
+        stringBuilder.append(reportModel.getHive1().getWeight());
+        stringBuilder.append(System.getProperty("line.separator"));
         stringBuilder.append("Humidity:");
         stringBuilder.append(System.getProperty("line.separator"));
         stringBuilder.append("\tLayer1: ");
@@ -432,7 +435,11 @@ public class MainActivity extends AppCompatActivity
         stringBuilder.append(reportModel.getHive1().getTemperatures().get(1));
         stringBuilder.append(System.getProperty("line.separator"));
 
+
         stringBuilder.append("[HIVE 2]");
+        stringBuilder.append(System.getProperty("line.separator"));
+        stringBuilder.append("Weight: ");
+        stringBuilder.append(reportModel.getHive2().getWeight());
         stringBuilder.append(System.getProperty("line.separator"));
         stringBuilder.append("Humidity:");
         stringBuilder.append(System.getProperty("line.separator"));
@@ -452,6 +459,9 @@ public class MainActivity extends AppCompatActivity
         stringBuilder.append(System.getProperty("line.separator"));
 
         stringBuilder.append("[HIVE 3]");
+        stringBuilder.append(System.getProperty("line.separator"));
+        stringBuilder.append("Weight: ");
+        stringBuilder.append(reportModel.getHive3().getWeight());
         stringBuilder.append(System.getProperty("line.separator"));
         stringBuilder.append("Humidity:");
         stringBuilder.append(System.getProperty("line.separator"));

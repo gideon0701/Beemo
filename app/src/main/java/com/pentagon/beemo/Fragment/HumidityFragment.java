@@ -60,9 +60,6 @@ public class HumidityFragment extends Fragment {
         graph.getLegendRenderer().setVisible(true);
         graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
         graph.getLegendRenderer().setTextSize(28);
-        graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity(), new SimpleDateFormat("HH:mm:ss")));
-        graph.getGridLabelRenderer().setNumHorizontalLabels(2);
-        graph.getGridLabelRenderer().setHumanRounding(false);
         graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
 
         graph2.getViewport().setScalable(true);
@@ -70,9 +67,6 @@ public class HumidityFragment extends Fragment {
         graph2.getLegendRenderer().setVisible(true);
         graph2.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
         graph2.getLegendRenderer().setTextSize(28);
-        graph2.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity(), new SimpleDateFormat("HH:mm:ss")));
-        graph2.getGridLabelRenderer().setNumHorizontalLabels(2);
-        graph2.getGridLabelRenderer().setHumanRounding(false);
         graph2.getGridLabelRenderer().setHorizontalLabelsVisible(false);
 
         TextView txtViewHumidHive1 = view.findViewById(R.id.txtViewHumidHive1);
@@ -97,9 +91,6 @@ public class HumidityFragment extends Fragment {
 
 
         if(mReportViewModel.reportModel != null) {
-            graph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
-            graph2.getGridLabelRenderer().setHorizontalLabelsVisible(true);
-
             double[] humid = mReportViewModel.getHumids();
             double[] humid2 = mReportViewModel.getHumids2();
             txtViewHumidHive1.setText(String.valueOf(humid[0]) + "%");
@@ -124,13 +115,13 @@ public class HumidityFragment extends Fragment {
         }
 
         series.setDrawDataPoints(true);
-        series.setDataPointsRadius(5);
+        series.setDataPointsRadius(8);
         series2.setDrawDataPoints(true);
-        series2.setDataPointsRadius(5);
+        series2.setDataPointsRadius(8);
         series3.setDrawDataPoints(true);
-        series3.setDataPointsRadius(5);
+        series3.setDataPointsRadius(8);
         series4.setDrawDataPoints(true);
-        series4.setDataPointsRadius(5);
+        series4.setDataPointsRadius(8);
         series.setColor(Color.RED);
         series.setTitle("HIVE 1");
         series2.setColor(Color.BLUE);
@@ -141,13 +132,13 @@ public class HumidityFragment extends Fragment {
         series4.setTitle("OUTSIDE");
 
         series2_1.setDrawDataPoints(true);
-        series2_1.setDataPointsRadius(5);
+        series2_1.setDataPointsRadius(8);
         series2_2.setDrawDataPoints(true);
-        series2_2.setDataPointsRadius(5);
+        series2_2.setDataPointsRadius(8);
         series2_3.setDrawDataPoints(true);
-        series2_3.setDataPointsRadius(5);
+        series2_3.setDataPointsRadius(8);
         series2_4.setDrawDataPoints(true);
-        series2_4.setDataPointsRadius(5);
+        series2_4.setDataPointsRadius(8);
         series2_1.setColor(Color.RED);
         series2_1.setTitle("HIVE 1");
         series2_2.setColor(Color.BLUE);
