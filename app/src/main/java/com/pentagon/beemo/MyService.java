@@ -164,7 +164,7 @@ public class MyService extends Service implements MqttCallback {
     private void setupMqtt()
     {
         //m2m.eclipse.org (backup topic)
-        final String broker = "tcp://iot.eclipse.org:1883";
+        final String broker = "tcp://broker.hivemq.com:1883";
         final String clientId = MqttClient.generateClientId();
         final MemoryPersistence persistence = new MemoryPersistence();
 

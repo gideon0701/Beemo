@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.NotificationCompat;
@@ -25,8 +26,13 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -233,7 +239,10 @@ public class MainActivity extends AppCompatActivity
             return true;
         }else if(id == R.id.action_viewHistory) {
             List<ReportModel> lstReportNodel = new ArrayList<>();
-            lstReportNodel = mHistoryModel.getReports();
+            if(mHistoryModel != null)
+            {
+                lstReportNodel = mHistoryModel.getReports();
+            }
             StringBuilder stringBuilder = new StringBuilder();
             String strPreviousdDate = getPreviousDate();
             String strCurrentDate = getCurrentDate();
@@ -255,10 +264,30 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void showMessage(String title, String Message){
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
-        builder.show();
+//        builder.setCancelable(true);
+//        builder.setTitle(title);
+//        builder.setMessage(Message);
+//        builder.show();
+
+        LayoutInflater inflater= LayoutInflater.from(this);
+        final View view=inflater.inflate(R.layout.history_dialog_layout, null);
+
+        TextView textview=(TextView)view.findViewById(R.id.text_history);
+        final ScrollView scrollView = view.findViewById(R.id.scroll);
+        FloatingActionButton buttonBottom = view.findViewById(R.id.buttonMoveDown);
+        textview.setText(Message);
+        buttonBottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scrollView.fullScroll(View.FOCUS_DOWN);
+            }
+        });
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setView(view);
+        alertDialog.setTitle(title);
+//        alertDialog.setButton("OK", null);
+        AlertDialog alert = alertDialog.create();
+        alert.show();
 
     }
 
@@ -294,7 +323,7 @@ public class MainActivity extends AppCompatActivity
     private void setupMqtt()
     {
         //m2m.eclipse.org (backup topic)
-        final String broker = "tcp://iot.eclipse.org:1883";
+        final String broker = "tcp://broker.hivemq.com:1883";
         final String clientId = MqttClient.generateClientId();
         final MemoryPersistence persistence = new MemoryPersistence();
         final String clientid2 = MqttClient.generateClientId();
@@ -384,13 +413,14 @@ public class MainActivity extends AppCompatActivity
             Log.e("MESSAGE  "," THIS IS SETTING");
             SettingsModel settingsModel =  mGson.fromJson(msg,SettingsModel.class);
             mReportViewModel.settingsModel = settingsModel;
+            progress.dismiss();
         }
 
         if(topic.equals(mStrTopic + "numbers")){
             Log.e("MESSAGE  "," THIS IS CONTACTS");
             ContactNumberModel contactNumberModel = mGson.fromJson(msg,ContactNumberModel.class);
             mReportViewModel.contactNumberModel = contactNumberModel;
-            progress.dismiss();
+
         }
 
         if(topic.equals(mStrTopic + "alerts")) {
